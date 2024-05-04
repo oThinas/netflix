@@ -24,7 +24,7 @@ export function Input({ label, className, ...props }: InputProps) {
       />
 
       <label
-        className='absolute left-6 top-4 z-10 origin-[0] -translate-y-3 scale-75 font-medium text-zinc-400 duration-300
+        className='absolute left-6 top-3 z-10 origin-[0] -translate-y-3 scale-75 font-medium text-zinc-400 duration-300
           peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75'
         htmlFor={props.id}
       >
