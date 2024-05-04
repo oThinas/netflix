@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react';
 
 /** Components */
 import { Input } from '@/components/Input';
+import Head from 'next/head';
+import Button from '@/components/Button';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -22,14 +24,20 @@ export default function Auth() {
 
   return(
     <div className='relative size-full bg-[url("/images/hero.jpg")] bg-cover bg-fixed bg-center bg-no-repeat'>
-      <div className='size-full bg-black lg:bg-black/50'>
+      <Head>
+        <title>
+          Netflix
+        </title>
+      </Head>
+
+      <div className='size-full bg-black lg:bg-black/50' aria-roledescription='Teste'>
         <nav className='px-12 py-5'>
           <Image src='/images/logo.png' alt='Netflix Logo' width={176} height={92} />
         </nav>
 
         <div className='flex justify-center'>
-          <div className='mt-2 w-full self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
-            <h2 className='mb-8 text-4xl font-semibold text-white'>
+          <div className='mt-2 flex w-full  flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
+            <h2 className='text-4xl font-semibold text-white'>
               {variant === 'login' ? 'Sign in' : 'Register'}
             </h2>
 
@@ -37,28 +45,28 @@ export default function Auth() {
               {variant === 'register' && (
                 <Input
                   label='Username' id='name' type='email' value={username}
-                  onChange={({ target: { value } }) => setUsername(value)}
+                  onChange={({ target: { value } }) => setUsername(value)} tabIndex={0}
                 />
               )}
 
               <Input
-                label='Email' id='email' type='email' value={email}
+                label='Email' id='email' type='email' value={email} tabIndex={0}
                 onChange={({ target: { value } }) => setEmail(value)}
               />
 
               <Input
-                label='Password' id='password' type='password' value={password}
+                label='Password' id='password' type='password' value={password} tabIndex={0}
                 onChange={({ target: { value } }) => setPassword(value)}
               />
             </div>
 
-            <button className='mt-10 w-full rounded-md bg-red-600 py-3 text-white transition hover:bg-red-700'>
+            <Button className='w-full rounded-md bg-red-600 py-3 text-white transition hover:bg-red-700'>
               {variant === 'login' ? 'Login' : 'Sign up'}
-            </button>
+            </Button>
 
-            <p className='mt-12 text-neutral-500'>
+            <p className='text-neutral-500'>
               {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
-              <span className='ml-1 cursor-pointer text-white hover:underline' onClick={() => toggleVariant()}>
+              <span className='ml-1 cursor-pointer text-white hover:underline' tabIndex={0} onClick={() => toggleVariant()}>
                 {variant === 'login' ? 'Create an account' : 'Login'}
               </span>
             </p>

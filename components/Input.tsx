@@ -6,7 +6,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string,
 }
 
-export function Input({ label, className, ...props }: InputProps) {
+export function Input(props: InputProps) {
   return (
     <div className='relative'>
       <input
@@ -19,7 +19,7 @@ export function Input({ label, className, ...props }: InputProps) {
         {...props}
         className={twMerge(
           'peer block w-full appearance-none rounded-md bg-neutral-700 px-6 pb-1 pt-6 font-medium text-white focus:outline-none focus:ring-0',
-          className,
+          props.className,
         )}
       />
 
@@ -28,7 +28,7 @@ export function Input({ label, className, ...props }: InputProps) {
           peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75'
         htmlFor={props.id}
       >
-        {label}
+        {props.label}
       </label>
     </div>
   );
