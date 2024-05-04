@@ -5,6 +5,8 @@ import { useCallback, useState } from 'react';
 /** Components */
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
+import { Title } from '@/components/Title';
+import { Text } from '@/components/Text';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -30,9 +32,9 @@ export default function Auth() {
 
         <div className='flex justify-center'>
           <div className='mt-2 flex w-full  flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
-            <h2 className='text-4xl font-semibold text-white'>
+            <Title as='h2'>
               {variant === 'login' ? 'Sign in' : 'Register'}
-            </h2>
+            </Title>
 
             <div className='flex flex-col gap-4'>
               {variant === 'register' && (
@@ -57,12 +59,15 @@ export default function Auth() {
               {variant === 'login' ? 'Login' : 'Sign up'}
             </Button>
 
-            <p className='text-neutral-500'>
+            <Text as='p' className='text-neutral-500'>
               {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
-              <span className='ml-1 cursor-pointer text-white hover:underline' tabIndex={0} onClick={() => toggleVariant()}>
+
+              &nbsp;
+
+              <Text as='span' className='cursor-pointer text-white hover:underline' tabIndex={0} onClick={() => toggleVariant()}>
                 {variant === 'login' ? 'Create an account' : 'Login'}
-              </span>
-            </p>
+              </Text>
+            </Text>
           </div>
         </div>
       </div>

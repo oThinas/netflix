@@ -22,6 +22,9 @@
     "@typescript-eslint",
     "tailwindcss"
   ],
+  "globals": {
+    "JSX": "readonly"
+  },
   "rules": {
     // General
     "quotes": [
