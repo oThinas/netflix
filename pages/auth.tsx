@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useCallback, useState } from 'react';
 
 /** Components */
-import { Input } from '@/component/Input';
+import { Input } from '@/components/Input';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
