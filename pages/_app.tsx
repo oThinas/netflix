@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Netflix</title>
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />n
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon" />n
       </Head>
       <Component {...pageProps} />
     </>
