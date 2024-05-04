@@ -4,8 +4,7 @@ import { useCallback, useState } from 'react';
 
 /** Components */
 import { Input } from '@/components/Input';
-import Head from 'next/head';
-import Button from '@/components/Button';
+import { Button } from '@/components/Button';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -24,12 +23,6 @@ export default function Auth() {
 
   return(
     <div className='relative size-full bg-[url("/images/hero.jpg")] bg-cover bg-fixed bg-center bg-no-repeat'>
-      <Head>
-        <title>
-          Netflix
-        </title>
-      </Head>
-
       <div className='size-full bg-black lg:bg-black/50' aria-roledescription='Teste'>
         <nav className='px-12 py-5'>
           <Image src='/images/logo.png' alt='Netflix Logo' width={176} height={92} />

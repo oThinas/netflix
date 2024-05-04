@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
-export default function Button(props: ButtonProps) {
+export function Button(props: ButtonProps) {
   return (
     <button
       {...props}
