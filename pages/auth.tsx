@@ -13,15 +13,28 @@ export default function Auth() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [variant, setVariant] = useState('login');
-  const toggleVariant = useCallback(
-    () => {
-      setVariant((prevState) => {
-        return prevState === 'login' ? 'register' : 'login';
-      });
-    },
-    [],
-  );
+  const [variant, setVariant] = useState<'login' | 'register'>('login');
+  const toggleVariant = useCallback(() => {
+    setVariant((prevState) => {
+      return prevState === 'login' ? 'register' : 'login';
+    });
+  }, []);
+
+  const { title, button, disclamer, toggle } = getVariantContent(variant);
+
+  function getVariantContent(variant: 'login' | 'register') {
+    return variant === 'login' ? {
+      title: 'Sign in',
+      button: 'Login',
+      disclamer: 'First time using Netflix?',
+      toggle: 'Create an account',
+    } : {
+      title: 'Register',
+      button: 'Sign up',
+      disclamer: 'Already have an account?',
+      toggle: 'Login',
+    };
+  }
 
   return(
     <div className='relative size-full bg-[url("/images/hero.jpg")] bg-cover bg-fixed bg-center bg-no-repeat'>
@@ -33,7 +46,7 @@ export default function Auth() {
         <div className='flex justify-center'>
           <div className='mt-2 flex w-full  flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
             <Title as='h2'>
-              {variant === 'login' ? 'Sign in' : 'Register'}
+              {title}
             </Title>
 
             <div className='flex flex-col gap-4'>
@@ -56,16 +69,16 @@ export default function Auth() {
             </div>
 
             <Button className='w-full rounded-md bg-red-600 py-3 text-white transition hover:bg-red-700'>
-              {variant === 'login' ? 'Login' : 'Sign up'}
+              {button}
             </Button>
 
             <Text as='p' className='text-neutral-500'>
-              {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
+              {disclamer}
 
               &nbsp;
 
               <Text as='span' className='cursor-pointer text-white hover:underline' tabIndex={0} onClick={() => toggleVariant()}>
-                {variant === 'login' ? 'Create an account' : 'Login'}
+                {toggle}
               </Text>
             </Text>
           </div>
