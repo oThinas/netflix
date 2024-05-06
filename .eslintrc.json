@@ -25,6 +25,7 @@
   "globals": {
     "JSX": "readonly"
   },
+  "ignorePatterns": ["*.d.ts"],
   "rules": {
     // General
     "quotes": [
