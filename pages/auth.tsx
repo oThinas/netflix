@@ -3,16 +3,11 @@ import Image from 'next/image';
 import { useCallback, useState } from 'react';
 
 /** Components */
-import { Input } from '@/components/Input';
-import { Button } from '@/components/Button';
 import { Title } from '@/components/Title';
 import { Text } from '@/components/Text';
+import { AuthForm } from '@/components/auth/AuthForm';
 
 export default function Auth() {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
   const [variant, setVariant] = useState<'login' | 'register'>('login');
   const toggleVariant = useCallback(() => {
     setVariant((prevState) => {
@@ -44,33 +39,12 @@ export default function Auth() {
         </nav>
 
         <div className='flex justify-center'>
-          <div className='mt-2 flex w-full  flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
+          <div className='mt-2 flex w-full flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
             <Title as='h2'>
               {title}
             </Title>
 
-            <div className='flex flex-col gap-4'>
-              {variant === 'register' && (
-                <Input
-                  label='Username' id='name' type='email' value={username}
-                  onChange={({ target: { value } }) => setUsername(value)} tabIndex={0}
-                />
-              )}
-
-              <Input
-                label='Email' id='email' type='email' value={email} tabIndex={0}
-                onChange={({ target: { value } }) => setEmail(value)}
-              />
-
-              <Input
-                label='Password' id='password' type='password' value={password} tabIndex={0}
-                onChange={({ target: { value } }) => setPassword(value)}
-              />
-            </div>
-
-            <Button className='w-full rounded-md bg-red-600 py-3 text-white transition hover:bg-red-700'>
-              {button}
-            </Button>
+            <AuthForm variant={variant} buttonLabel={button} />
 
             <Text as='p' className='text-neutral-500'>
               {disclamer}

@@ -1,13 +1,24 @@
 /** Core */
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, LegacyRef, RefAttributes, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
   label: string,
 }
 
-export function Input(props: InputProps) {
-  return (
+export function RawInput(props: InputProps, ref: LegacyRef<HTMLInputElement>) {
+  return props.type === 'submit' ? (
+    <input
+      {...props}
+      value={props.label}
+      ref={ref}
+      className={twMerge(
+        'w-full rounded-md bg-red-600 py-3 text-white transition',
+        'hover:bg-red-700 focus-visible:outline focus-visible:outline-transparent focus-visible:bg-red-700',
+        props.className,
+      )}
+    />
+  ) : (
     <div className='relative'>
       <input
         onChange={props.onChange}
@@ -17,6 +28,7 @@ export function Input(props: InputProps) {
         aria-labelledby={props.id}
         placeholder=' '
         {...props}
+        ref={ref}
         className={twMerge(
           'peer block w-full appearance-none rounded-md bg-neutral-700 px-6 pb-1 pt-6 font-medium text-white focus:outline-none focus:ring-0',
           props.className,
@@ -33,3 +45,5 @@ export function Input(props: InputProps) {
     </div>
   );
 }
+
+export const Input = forwardRef(RawInput);
