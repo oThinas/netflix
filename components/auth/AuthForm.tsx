@@ -32,11 +32,12 @@ export function AuthForm(props: AuthFormProps) {
   });
 
   const onSubmit: SubmitHandler<AuthFormFields> = (data) => {
-    if (props.variant === 'register') handleRegister(data);
-    else handleLogin(data);
+    const toastID = toast.loading('Loading...');
+    if (props.variant === 'register') handleRegister(data, toastID);
+    else handleLogin(data, toastID);
   };
 
-  const handleLogin = useCallback(async ({ email, password }: Omit<AuthFormFields, 'name'>) => {
+  const handleLogin = useCallback(async ({ email, password }: Omit<AuthFormFields, 'name'>, toastID: string) => {
     try {
       const response = await signIn('credentials', {
         email,
@@ -47,8 +48,9 @@ export function AuthForm(props: AuthFormProps) {
 
       if (!response?.ok) {
         const message = (email && password) ? 'Incorrect email and/or password' : 'Email and password required';
-        toast.error(message);
+        toast.error(message, { id: toastID });
       } else {
+        toast.dismiss(toastID);
         router.push('/');
       }
     } catch (error) {
@@ -56,7 +58,7 @@ export function AuthForm(props: AuthFormProps) {
     }
   }, [router]);
 
-  const handleRegister = useCallback(async ({ email, name, password }: AuthFormFields) => {
+  const handleRegister = useCallback(async ({ email, name, password }: AuthFormFields, toastID: string) => {
     try {
       await axios.post('/api/register', {
         email,
@@ -64,11 +66,11 @@ export function AuthForm(props: AuthFormProps) {
         password,
       });
 
-      handleLogin({ email, password });
+      handleLogin({ email, password }, toastID);
     } catch (error: any) {
       console.log(error);
       const message = error.response.status === 422 ? 'Email taken' : 'An error occurred. Try again later';
-      toast.error(message);
+      toast.error(message, { id: toastID });
     }
   }, [handleLogin]);
 
