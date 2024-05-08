@@ -27,6 +27,7 @@ export function RawInput(props: InputProps, ref: LegacyRef<HTMLInputElement>) {
         id={props.id}
         aria-labelledby={props.id}
         placeholder=' '
+        tabIndex={0}
         {...props}
         ref={ref}
         className={twMerge(

@@ -1,17 +1,17 @@
 # TODO
 
 - Implementar autenticação
-  - NextAuth
+  - ~~NextAuth~~
 
-  - Prisma
+  - ~~Prisma~~
 
-  - MongoDB
+  - ~~MongoDB~~
 
-  - Google
+  - ~~Google~~
 
-  - Github OAuth
+  - ~~Github OAuth~~
 
-- Protejer rotas
+- Proteger rotas
 
 - Tela de perfil
 

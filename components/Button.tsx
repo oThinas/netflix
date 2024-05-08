@@ -7,10 +7,11 @@ type ButtonProps = HTMLAttributes<HTMLButtonElement>
 export function Button(props: ButtonProps) {
   return (
     <button
+      tabIndex={0}
       {...props}
       className={twMerge(
-        'w-full rounded-md bg-red-600 py-3 text-white transition',
-        'hover:bg-red-700 focus-visible:outline focus-visible:outline-transparent focus-visible:bg-red-700',
+        'flex cursor-pointer items-center justify-center transition',
+        'focus-visible:outline focus-visible:outline-transparent',
         props.className,
       )}
     >
