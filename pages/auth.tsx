@@ -1,13 +1,21 @@
 /** Core */
+import { InferGetServerSidePropsType, NextPageContext } from 'next';
+import { getSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 
 /** Components */
-import { Title } from '@/components/Title';
-import { Text } from '@/components/Text';
 import { AuthForm } from '@/components/auth/AuthForm';
+import { Text } from '@/components/Text';
+import { Title } from '@/components/Title';
 
-export default function Auth() {
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  return { props: { session } };
+}
+
+export default function Auth({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [variant, setVariant] = useState<'login' | 'register'>('login');
   const toggleVariant = useCallback(() => {
     setVariant((prevState) => {
@@ -31,7 +39,7 @@ export default function Auth() {
     };
   }
 
-  return(
+  return (
     <div className='relative size-full bg-[url("/images/hero.jpg")] bg-cover bg-fixed bg-center bg-no-repeat'>
       <div className='size-full bg-black lg:bg-black/50' aria-roledescription='Teste'>
         <nav className='px-12 py-5'>
@@ -44,7 +52,7 @@ export default function Auth() {
               {title}
             </Title>
 
-            <AuthForm variant={variant} buttonLabel={button} />
+            <AuthForm variant={variant} buttonLabel={button} session={session} />
 
             <Text as='p' className='text-neutral-500'>
               {disclamer}
