@@ -5,10 +5,10 @@ import toast from 'react-hot-toast';
 
 /** Components */
 import { Button } from '@/components/Button';
+import { Text } from '@/components/Text';
 
 /** Hooks */
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { Text } from '@/components/Text';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
