@@ -12,7 +12,7 @@ export function Text(props: TextProps<AsProp>) {
   const Element = props.as;
 
   return (
-    <Element {...props} className={twMerge(props.className)}>
+    <Element {...props} className={twMerge('text-white', props.className)}>
       {props.children}
     </Element>
   );

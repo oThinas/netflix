@@ -46,7 +46,7 @@ export default function Profiles() {
                 className='flex size-44 items-center justify-center overflow-hidden rounded-md border-2 border-transparent transition
                 group-hover:cursor-pointer group-hover:border-white'
               >
-                <Image src='/images/default-blue.png' alt='Profile' width={176} height={176} />
+                <Image src='/images/default-blue.png' alt='Profile image. A cartoon blue face' width={176} height={176} />
               </div>
 
               <div className='mt-4 text-center text-2xl text-gray-400 transition group-hover:text-white'>
