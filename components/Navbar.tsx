@@ -7,26 +7,17 @@ import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
 import { AccountMenu } from './AccountMenu';
 import { MobileMenu } from './MobileMenu';
 import { NavbarItem } from './NavbarItem';
-import { ProfileImage } from './ProfileImage';
 import { Text } from './Text';
 
 const TOP_OFFSET = 66;
 
 export function Navbar() {
   const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
-  const [isAccountMenuShown, setIsAccountMenuShown] = useState(false);
   const [isBackgroundShown, setIsBackgroundShown] = useState(false);
 
   const handleToggleMobileMenu = useCallback(
     () => {
       setIsMobileMenuShown((prevState) => !prevState);
-    },
-    [],
-  );
-
-  const handleToggleAccountMenu = useCallback(
-    () => {
-      setIsAccountMenuShown((prevState) => !prevState);
     },
     [],
   );
@@ -95,15 +86,7 @@ export function Navbar() {
             <BsBell />
           </div>
 
-          <div className='relative flex cursor-pointer items-center gap-2' onClick={() => handleToggleAccountMenu()}>
-            <div className='size-6 overflow-hidden rounded-md lg:size-10'>
-              <ProfileImage />
-            </div>
-
-            <BsChevronDown className={`text-white transition ${isAccountMenuShown ? 'rotate-180' : 'rotate-0'}`} />
-
-            <AccountMenu visible={isAccountMenuShown} />
-          </div>
+          <AccountMenu />
         </div>
       </div>
     </nav>
