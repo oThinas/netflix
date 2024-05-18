@@ -1,26 +1,18 @@
 /** Core */
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
-import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
+import { BsBell, BsSearch } from 'react-icons/bs';
 
 /** Components */
 import { AccountMenu } from './AccountMenu';
 import { MobileMenu } from './MobileMenu';
 import { NavbarItem } from './NavbarItem';
-import { Text } from './Text';
 
 const TOP_OFFSET = 66;
 
 export function Navbar() {
-  const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
   const [isBackgroundShown, setIsBackgroundShown] = useState(false);
 
-  const handleToggleMobileMenu = useCallback(
-    () => {
-      setIsMobileMenuShown((prevState) => !prevState);
-    },
-    [],
-  );
 
   useEffect(() => {
     function handleScroll() {
@@ -67,15 +59,7 @@ export function Navbar() {
           </NavbarItem>
         </div>
 
-        <div className='relative ml-8 flex cursor-pointer items-center gap-2 lg:hidden' onClick={() => handleToggleMobileMenu()}>
-          <Text as='p' className='text-sm'>
-            Browse
-          </Text>
-
-          <BsChevronDown className={`text-white transition ${isMobileMenuShown ? 'rotate-180' : 'rotate-0'}`} />
-
-          <MobileMenu visible={isMobileMenuShown} />
-        </div>
+        <MobileMenu />
 
         <div className='ml-auto flex items-center gap-7'>
           <div className='cursor-pointer text-gray-200 transition hover:text-gray-300'>
