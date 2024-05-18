@@ -6,7 +6,11 @@ import { BsChevronDown } from 'react-icons/bs';
 /** Components */
 import { Text } from './Text';
 
-export function MobileMenu() {
+interface MobileMenuProps {
+  items: string[];
+}
+
+export function MobileMenu(props: MobileMenuProps) {
   const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
 
   const handleToggleMobileMenu = useCallback(
@@ -32,41 +36,13 @@ export function MobileMenu() {
         <DropdownMenu.Content
           className='absolute left-0 top-8 flex w-56 animate-slideDownAndFade flex-col gap-4 border-2 border-gray-800 bg-black py-5 transition will-change-[opacity,transform]'
         >
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              Home
-            </Text>
-          </DropdownMenu.Item>
-
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              Series
-            </Text>
-          </DropdownMenu.Item>
-
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              Films
-            </Text>
-          </DropdownMenu.Item>
-
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              My list
-            </Text>
-          </DropdownMenu.Item>
-
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              New & Popular
-            </Text>
-          </DropdownMenu.Item>
-
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='hover:underline'>
-              Browse by languages
-            </Text>
-          </DropdownMenu.Item>
+          {props.items.map((item) => (
+            <DropdownMenu.Item key={item} className='px-3 text-center hover:outline-none hover:ring-0'>
+              <Text as='span' className='hover:underline'>
+                {item}
+              </Text>
+            </DropdownMenu.Item>
+          ))}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
