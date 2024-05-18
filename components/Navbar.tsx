@@ -7,6 +7,7 @@ import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
 import { AccountMenu } from './AccountMenu';
 import { MobileMenu } from './MobileMenu';
 import { NavbarItem } from './NavbarItem';
+import { ProfileImage } from './ProfileImage';
 import { Text } from './Text';
 
 const TOP_OFFSET = 66;
@@ -96,7 +97,7 @@ export function Navbar() {
 
           <div className='relative flex cursor-pointer items-center gap-2' onClick={() => handleToggleAccountMenu()}>
             <div className='size-6 overflow-hidden rounded-md lg:size-10'>
-              <Image src='/images/default-blue.png' alt='Profile image. A cartoon blue face' style={{ height: 'auto', width: 'auto' }} width={320} height={320} />
+              <ProfileImage />
             </div>
 
             <BsChevronDown className={`text-white transition ${isAccountMenuShown ? 'rotate-180' : 'rotate-0'}`} />
