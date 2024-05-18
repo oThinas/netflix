@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 type AsProp = 'p' | 'span';
 
-interface TextProps<T extends AsProp> extends HTMLAttributes<T extends 'p' ? HTMLParagraphElement : T extends 'span' ? HTMLSpanElement : never> {
+export interface TextProps<T extends AsProp> extends HTMLAttributes<T extends 'p' ? HTMLParagraphElement : T extends 'span' ? HTMLSpanElement : never> {
   as: T;
 }
 

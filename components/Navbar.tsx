@@ -34,27 +34,27 @@ export function Navbar() {
         <Image src='/images/logo.png' alt='Netflix logo. Written in red' className='h-4 lg:h-7' style={{ width: 'auto' }} width={1440} height={393} />
 
         <div className='ml-8 hidden gap-7 lg:flex'>
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             Home
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             Series
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             Films
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             New & Popular
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             My List
           </NavbarItem>
 
-          <NavbarItem>
+          <NavbarItem tabIndex={0}>
             Browse by languages
           </NavbarItem>
         </div>
@@ -63,11 +63,11 @@ export function Navbar() {
 
         <div className='ml-auto flex items-center gap-7'>
           <div className='cursor-pointer text-gray-200 transition hover:text-gray-300'>
-            <BsSearch />
+            <BsSearch tabIndex={0} />
           </div>
 
           <div className='cursor-pointer text-gray-200 transition hover:text-gray-300'>
-            <BsBell />
+            <BsBell tabIndex={0} />
           </div>
 
           <AccountMenu />

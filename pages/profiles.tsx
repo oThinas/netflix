@@ -5,10 +5,12 @@ import { useRouter } from 'next/router';
 
 /** Components */
 import { ProfileImage } from '@/components/ProfileImage';
+import { Text } from '@/components/Text';
 import { Title } from '@/components/Title';
 
 /** Hooks */
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useCallback } from 'react';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -28,9 +30,23 @@ export default function Profiles() {
   const router = useRouter();
   const { data: user } = useCurrentUser();
 
-  function handleAcessProfile() {
-    router.push('/');
-  }
+
+  const handleAcessProfile = useCallback(
+    () => {
+      router.push('/');
+    },
+    [router],
+  );
+
+  const handleKeyUp = useCallback(
+    (key: string) => {
+      if (key === 'Enter' || key === ' ') {
+        handleAcessProfile();
+      }
+    },
+    [handleAcessProfile],
+  );
+
 
   return (
     <div className='flex h-full items-center justify-center'>
@@ -40,18 +56,19 @@ export default function Profiles() {
         </Title>
 
         <div className='mt-10 flex items-center justify-center gap-8'>
-          <div onClick={() => handleAcessProfile()}>
+          <div className='text-center' onClick={() => handleAcessProfile()} onKeyUp={({ key }) => handleKeyUp(key)}>
             <div className='group mx-auto w-44 flex-row'>
               <div
                 className='flex size-44 items-center justify-center overflow-hidden rounded-md border-2 border-transparent transition
                 group-hover:cursor-pointer group-hover:border-white'
+                tabIndex={0}
               >
                 <ProfileImage width={176} height={176} />
               </div>
 
-              <div className='mt-4 text-center text-2xl text-gray-400 transition group-hover:text-white'>
+              <Text as='span' className='mt-4 text-2xl text-gray-400 transition group-hover:text-white'>
                 {user?.name}
-              </div>
+              </Text>
             </div>
           </div>
         </div>
