@@ -1,3 +1,6 @@
+/** Components */
+import { Text } from './Text';
+
 interface MobileMenuProps {
   visible: boolean;
 }
@@ -10,29 +13,29 @@ export function MobileMenu(props: MobileMenuProps) {
   return (
     <div className='absolute left-0 top-8 flex w-56 flex-col border-2 border-gray-800 bg-black py-5'>
       <div className='flex flex-col gap-4'>
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           Home
-        </div>
+        </Text>
 
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           Series
-        </div>
+        </Text>
 
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           Films
-        </div>
+        </Text>
 
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           My list
-        </div>
+        </Text>
 
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           New & Popular
-        </div>
+        </Text>
 
-        <div className='px-3 text-center text-white hover:underline'>
+        <Text as='span' className='px-3 text-center hover:underline'>
           Browse by languages
-        </div>
+        </Text>
       </div>
     </div>
   );
