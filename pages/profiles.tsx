@@ -14,6 +14,7 @@ import { useCallback } from 'react';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
+  console.log('session: ', session);
   if (!session) {
     return {
       redirect: {
@@ -57,7 +58,7 @@ export default function Profiles() {
 
         <div className='mt-10 flex items-center justify-center gap-8'>
           <div className='text-center' onClick={() => handleAcessProfile()} onKeyUp={({ key }) => handleKeyUp(key)}>
-            <div className='group mx-auto w-44 flex-row'>
+            <div className='group mx-auto w-44 break-words'>
               <div
                 className='flex size-44 items-center justify-center overflow-hidden rounded-md border-2 border-transparent transition
                 group-hover:cursor-pointer group-hover:border-white'
