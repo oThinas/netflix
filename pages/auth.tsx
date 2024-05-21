@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useCallback, useState } from 'react';
 
 /** Components */
-import { AuthForm } from '@/components/auth/AuthForm';
+import { AuthForm } from '@/components/AuthForm';
 import { Text } from '@/components/Text';
 import { Title } from '@/components/Title';
 

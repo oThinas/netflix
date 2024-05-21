@@ -11,7 +11,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
   }
 
   try {
-    await serverAuth(request);
+    await serverAuth(request, response);
 
     const movies = await prismadb.movie.findMany();
 

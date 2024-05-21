@@ -2,6 +2,7 @@
 import { Movie } from '@prisma/client';
 import Image from 'next/image';
 import { BsFillPlayFill } from 'react-icons/bs';
+import { FavoriteButton } from './FavoriteButton';
 import { Text } from './Text';
 
 interface MovieCardProps {
@@ -38,6 +39,8 @@ export function MovieCard(props: MovieCardProps) {
             >
               <BsFillPlayFill size={32} />
             </div>
+
+            <FavoriteButton movieId={props.data.id} />
           </div>
 
           <Text as='p' className='mt-4 font-semibold text-green-400'>
@@ -46,6 +49,12 @@ export function MovieCard(props: MovieCardProps) {
               2023
             </Text>
           </Text>
+
+          <div className='mt-4 flex items-center gap-2'>
+            <Text as='p' className='text-[10px] lg:text-sm'>
+              {props.data.title}
+            </Text>
+          </div>
 
           <div className='mt-4 flex items-center gap-2'>
             <Text as='p' className='text-[10px] lg:text-sm'>

@@ -11,15 +11,12 @@ export default async function handler(request: NextApiRequest, response: NextApi
   }
 
   try {
-    await serverAuth(request, response);
+    const { currentUser } = await serverAuth(request, response);
+    const favoriteMovies = await prismadb.movie.findMany({ where: { id: { in: currentUser?.favoriteIds } } });
 
-    const movieCount = await prismadb.movie.count();
-    const randomIndex = Math.floor(Math.random() * movieCount);
-    const randomMovie = (await prismadb.movie.findMany({ take: 1, skip: randomIndex }))[0];
-
-    return response.status(200).json(randomMovie);
+    return response.status(200).json(favoriteMovies);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return response.status(400).end();
   }
 }

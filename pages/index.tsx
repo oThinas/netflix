@@ -9,6 +9,7 @@ import { MovieList } from '@/components/MovieList';
 import { Navbar } from '@/components/Navbar';
 
 /** Hooks */
+import { useFavorites } from '@/hooks/useFavorites';
 import { useMovieList } from '@/hooks/useMovieList';
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -27,6 +28,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home() {
   const { data: movies = [] } = useMovieList() as { data: Movie[] };
+  const { data: favoriteMovies = [] } = useFavorites() as { data: Movie[] };
 
   return (
     <>
@@ -34,8 +36,10 @@ export default function Home() {
 
       <Billboard />
 
-      <div className='flex flex-col gap-40'>
+      <div className='flex flex-col gap-4'>
         <MovieList title='Trending now' data={movies} />
+
+        <MovieList title='My list' data={favoriteMovies} />
       </div>
     </>
   );
