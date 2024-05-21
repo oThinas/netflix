@@ -12,7 +12,7 @@ export function Billboard() {
     <div className='relative h-[56.25vw]'>
       <video
         autoPlay muted loop poster={data?.thumbnailUrl} src={data?.videoUrl}
-        className='h-[56.vw] w-full object-cover brightness-[60%]'
+        className='h-[56.25vw] w-full object-cover brightness-[60%]'
       />
 
       <div className='absolute top-[30%] ml-4 md:top-[40%] md:ml-16'>

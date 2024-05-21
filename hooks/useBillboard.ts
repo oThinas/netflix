@@ -1,15 +1,6 @@
-/** Core */
-import useSWR from 'swr';
-
-/** Libs */
-import { fetcher } from '@/lib/fetcher';
+/** Hooks */
+import { useSWRRequest } from './useSWRRequest';
 
 export function useBillboard() {
-  const { data, error, isLoading } = useSWR('/api/random', fetcher, {
-    revalidateOnFocus: false,
-    revalidateIfStale: false,
-    revalidateOnReconnect: false,
-  });
-
-  return { data, error, isLoading };
+  return useSWRRequest('/api/random');
 }
