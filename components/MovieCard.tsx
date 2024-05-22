@@ -14,9 +14,9 @@ export function MovieCard(props: MovieCardProps) {
     <div className='group relative h-[12vw] bg-zinc-900'>
       <Image
         src={props.data.thumbnailUrl} alt={`Thumbnail of ${props.data.title}`} width={1920} height={1000}
-        className='h-[12vw] w-full cursor-pointer rounded-md object-cover shadow-xl transition delay-300
+        className='cursor-pointer rounded-md object-cover shadow-xl transition delay-300
         group-hover:opacity-90 sm:group-hover:opacity-0'
-        style={{ width: 'auto', height: 'auto' }}
+        style={{ width: '100%', height: '100%' }}
       />
 
       <div
@@ -26,8 +26,8 @@ export function MovieCard(props: MovieCardProps) {
       >
         <Image
           src={props.data.thumbnailUrl} alt={`Thumbnail of ${props.data.title}`} width={1920} height={1000}
-          className='h-[12vw] w-full cursor-pointer rounded-t-md object-cover shadow-xl transition'
-          style={{ width: 'auto', height: 'auto' }}
+          className='cursor-pointer rounded-t-md object-cover shadow-xl transition'
+          style={{ width: '100%', height: '100%' }}
         />
 
         <div className='absolute z-10 w-full rounded-b-md bg-zinc-800 p-2 shadow-md transition lg:p-4'>
