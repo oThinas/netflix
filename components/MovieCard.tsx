@@ -52,12 +52,6 @@ export function MovieCard(props: MovieCardProps) {
 
           <div className='mt-4 flex items-center gap-2'>
             <Text as='p' className='text-[10px] lg:text-sm'>
-              {props.data.title}
-            </Text>
-          </div>
-
-          <div className='mt-4 flex items-center gap-2'>
-            <Text as='p' className='text-[10px] lg:text-sm'>
               {props.data.duration}
             </Text>
           </div>
