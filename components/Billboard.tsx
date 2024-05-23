@@ -1,9 +1,14 @@
-/** Hooks */
-import { useBillboard } from '@/hooks/useBillboard';
+/** Core */
 import { Movie } from '@prisma/client';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+
+/** Components */
 import { Button } from './Button';
+import { PlayButton } from './PlayButton';
 import { Text } from './Text';
+
+/** Hooks */
+import { useBillboard } from '@/hooks/useBillboard';
 
 export function Billboard() {
   const { data } = useBillboard() as { data: Movie };
@@ -25,6 +30,8 @@ export function Billboard() {
         </Text>
 
         <div className='mt-3 flex items-center gap-3 md:mt-4'>
+          <PlayButton movieId={data?.id} />
+
           <Button className='w-auto gap-1 rounded-md bg-white/30 px-2 py-1 text-xs font-semibold text-white transition hover:bg-white/20 md:px-4 md:py-2 lg:text-lg'>
             <AiOutlineInfoCircle />
 

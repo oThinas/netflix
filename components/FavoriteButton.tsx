@@ -1,13 +1,16 @@
 /** Core */
 import { User } from '@prisma/client';
+import axios from 'axios';
 import { useCallback, useMemo } from 'react';
+import toast from 'react-hot-toast';
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai';
+
+/** Components */
+import { Button } from './Button';
 
 /** Hooks */
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useFavorites } from '@/hooks/useFavorites';
-import axios from 'axios';
-import toast from 'react-hot-toast';
 
 interface FavoriteButtonProps {
   movieId: string;
@@ -42,23 +45,25 @@ export function FavoriteButton(props: FavoriteButtonProps) {
     mutateFavorites();
   }, [props.movieId, isFavorite, currentUser, mutate, mutateFavorites]);
 
-  const handleFavorite = useCallback(() => {
-    toast.promise(toggleFavorites(), {
-      error: 'Failed to update favorite',
-      loading: 'Updating favorite...',
-      success: 'Favorite updated!',
-    });
-  }, [toggleFavorites]);
+  const handleFavorite = useCallback(
+    () => {
+      toast.promise(toggleFavorites(), {
+        error: 'Failed to update favorite',
+        loading: 'Updating favorite...',
+        success: 'Favorite updated!',
+      });
+    },
+    [toggleFavorites],
+  );
 
   const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
 
   return (
-    <div
-      className='group/item flex size-6 cursor-pointer items-center justify-center rounded-full border-2 border-white
-      transition hover:border-neutral-300 lg:size-10'
+    <Button
+      className='group/item size-6 rounded-full border-2 border-white hover:border-neutral-300 lg:size-10'
       onClick={() => handleFavorite()}
     >
       <Icon className='text-white group-hover/item:text-neutral-300' size={24} />
-    </div>
+    </Button>
   );
 }

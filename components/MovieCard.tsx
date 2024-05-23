@@ -1,7 +1,12 @@
 /** Core */
 import { Movie } from '@prisma/client';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import { BsFillPlayFill } from 'react-icons/bs';
+
+/** Components */
+import { Button } from './Button';
 import { FavoriteButton } from './FavoriteButton';
 import { Text } from './Text';
 
@@ -10,6 +15,15 @@ interface MovieCardProps {
 }
 
 export function MovieCard(props: MovieCardProps) {
+  const router = useRouter();
+
+  const handlePlay = useCallback(
+    () => {
+      router.push(`/watch/${props.data.id}`);
+    },
+    [props.data, router],
+  );
+
   return (
     <div className='group relative h-[12vw] bg-zinc-900'>
       <Image
@@ -32,13 +46,12 @@ export function MovieCard(props: MovieCardProps) {
 
         <div className='absolute z-10 w-full rounded-b-md bg-zinc-800 p-2 shadow-md transition lg:p-4'>
           <div className='flex items-center gap-3'>
-            <div
-              className='flex size-6 cursor-pointer items-center justify-center rounded-full bg-white transition
-              hover:bg-neutral-300 lg:size-10'
-              onClick={() => { }}
+            <Button
+              className='size-6 rounded-full bg-white hover:bg-neutral-300 lg:size-10'
+              onClick={() => handlePlay()}
             >
               <BsFillPlayFill size={32} />
-            </div>
+            </Button>
 
             <FavoriteButton movieId={props.data.id} />
           </div>
