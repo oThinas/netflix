@@ -1,16 +1,16 @@
 /** Core */
 import { useCallback, useEffect, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 
 /** Components */
-
-/** Hooks */
-import { useInfoModal } from '@/hooks/useInfoModal';
-import { useMovie } from '@/hooks/useMovie';
-import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from './Button';
 import { FavoriteButton } from './FavoriteButton';
 import { PlayButton } from './PlayButton';
 import { Text } from './Text';
+
+/** Hooks */
+import { useInfoModal } from '@/hooks/useInfoModal';
+import { useMovie } from '@/hooks/useMovie';
 
 interface InfoModalProps {
   onClose(): void;
