@@ -13,7 +13,7 @@ import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { useFavorites } from '@/hooks/useFavorites';
 
 interface FavoriteButtonProps {
-  movieId: string;
+  movieId: string | undefined;
 }
 
 export function FavoriteButton(props: FavoriteButtonProps) {
@@ -23,7 +23,7 @@ export function FavoriteButton(props: FavoriteButtonProps) {
   const isFavorite = useMemo(() => {
     const list = currentUser?.favoriteIds || [];
 
-    return list.includes(props.movieId);
+    return props.movieId && list.includes(props.movieId);
   }, [currentUser, props.movieId]);
 
   const toggleFavorites = useCallback(async () => {

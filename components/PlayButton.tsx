@@ -7,7 +7,7 @@ import { BsFillPlayFill } from 'react-icons/bs';
 import { Button } from './Button';
 
 interface PlayButtonProps {
-  movieId: string;
+  movieId: string | undefined;
 }
 
 export function PlayButton(props: PlayButtonProps) {
