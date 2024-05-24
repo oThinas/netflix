@@ -1,9 +1,9 @@
 /** Core */
+import * as Dialog from '@radix-ui/react-dialog';
 import { useCallback } from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 /** Components */
-import { Button } from './Button';
 import { PlayButton } from './PlayButton';
 import { Text } from './Text';
 
@@ -13,13 +13,13 @@ import { useInfoModal } from '@/hooks/useInfoModal';
 
 export function Billboard() {
   const { data } = useBillboard();
-  const { openModal } = useInfoModal();
+  const { setMovieId } = useInfoModal();
 
   const handleOpenModal = useCallback(
     () => {
-      openModal(data?.id);
+      if (data?.id) setMovieId(data.id);
     },
-    [openModal, data?.id],
+    [data, setMovieId],
   );
 
   return (
@@ -41,15 +41,16 @@ export function Billboard() {
         <div className='mt-3 flex items-center gap-3 md:mt-4'>
           <PlayButton movieId={data?.id} />
 
-          <Button
-            className='w-auto gap-1 rounded-md bg-white/30 px-2 py-1 text-xs font-semibold text-white
-          hover:bg-white/20 md:px-4 md:py-2 lg:text-lg'
+          <Dialog.Trigger
+            className='flex w-auto cursor-pointer items-center justify-center gap-1 rounded-md bg-white/30 px-2 py-1
+            text-xs font-semibold text-white transition hover:bg-white/20
+            focus-visible:outline focus-visible:outline-transparent md:px-4 md:py-2 lg:text-lg'
             onClick={() => handleOpenModal()}
           >
             <AiOutlineInfoCircle />
 
             More info
-          </Button>
+          </Dialog.Trigger>
         </div>
       </div>
     </div>

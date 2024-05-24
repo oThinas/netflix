@@ -8,8 +8,12 @@ import { BsChevronDown } from 'react-icons/bs';
 import { ProfileImage } from './ProfileImage';
 import { Text } from './Text';
 
+/** Hooks */
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+
 
 export function AccountMenu() {
+  const { data: user } = useCurrentUser();
   const [isAccountMenuShown, setIsAccountMenuShown] = useState(false);
 
   const handleSignOut = useCallback(
@@ -46,7 +50,7 @@ export function AccountMenu() {
             <ProfileImage className='rounded-md' width='32px' />
 
             <Text as='p' className='text-sm group-hover/item:underline'>
-              Username
+              {user?.name}
             </Text>
           </DropdownMenu.Item>
 

@@ -1,9 +1,14 @@
 /** Core */
 import { Movie } from '@prisma/client';
+import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import { BiChevronDown } from 'react-icons/bi';
 import { BsFillPlayFill } from 'react-icons/bs';
+
+/** Hooks */
+import { useInfoModal } from '@/hooks/useInfoModal';
 
 /** Components */
 import { Button } from './Button';
@@ -16,12 +21,20 @@ interface MovieCardProps {
 
 export function MovieCard(props: MovieCardProps) {
   const router = useRouter();
+  const { setMovieId } = useInfoModal();
 
   const handlePlay = useCallback(
     () => {
       router.push(`/watch/${props.data.id}`);
     },
     [props.data, router],
+  );
+
+  const handleOpenModal = useCallback(
+    () => {
+      setMovieId(props.data.id);
+    },
+    [props.data, setMovieId],
   );
 
   return (
@@ -54,6 +67,14 @@ export function MovieCard(props: MovieCardProps) {
             </Button>
 
             <FavoriteButton movieId={props.data.id} />
+
+            <Dialog.Trigger
+              className='group/item ml-auto flex size-6 cursor-pointer items-center justify-center rounded-full border-2
+              border-white transition hover:border-neutral-300 lg:size-10'
+              onClick={() => handleOpenModal()}
+            >
+              <BiChevronDown className='text-white group-hover/item:text-neutral-300' size={32} />
+            </Dialog.Trigger>
           </div>
 
           <Text as='p' className='mt-4 font-semibold text-green-400'>

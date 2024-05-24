@@ -1,20 +1,23 @@
 /** Core */
 import { create } from 'zustand';
 
-export interface ModalStore {
+interface ModalStore {
   isOpen: boolean;
-  openModal(movieId?: string): void;
-  closeModal(): void;
+  toggleModal(): void;
+  setMovieId(movieId: string): void;
   movieId?: string;
 }
 
-export const useInfoModal = create<ModalStore>((set) => ({
+export const useInfoModal = create<ModalStore>()((set) => ({
   movieId: undefined,
   isOpen: false,
-  openModal(movieId: string) {
-    set({ isOpen: true, movieId });
+  toggleModal() {
+    set((state) => ({
+      isOpen: !state.isOpen,
+      movieId: !state.isOpen ? state.movieId : undefined,
+    }));
   },
-  closeModal() {
-    set({ isOpen: false, movieId: undefined });
+  setMovieId(movieId: string) {
+    set(() => ({ movieId }));
   },
 }));

@@ -1,4 +1,5 @@
 /** Core */
+import * as Dialog from '@radix-ui/react-dialog';
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react';
 
@@ -30,11 +31,11 @@ export async function getServerSideProps(context: NextPageContext) {
 export default function Home() {
   const { data: movies = [] } = useMovieList();
   const { data: favoriteMovies = [] } = useFavorites();
-  const { isOpen, closeModal } = useInfoModal();
+  const { isOpen, toggleModal } = useInfoModal();
 
   return (
-    <>
-      <InfoModal visible={isOpen} onClose={() => closeModal()} />
+    <Dialog.Root open={isOpen} onOpenChange={() => toggleModal()}>
+      <InfoModal />
 
       <Navbar />
 
@@ -45,6 +46,6 @@ export default function Home() {
 
         <MovieList title='My list' data={favoriteMovies} />
       </div>
-    </>
+    </Dialog.Root>
   );
 }
