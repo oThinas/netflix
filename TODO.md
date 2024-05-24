@@ -11,24 +11,24 @@
 
   - ~~Github OAuth~~
 
-- Proteger rotas
+- ~~ Proteger rotas ~~
 
-- Tela de perfil
+- ~~ Tela de perfil ~~
 
-- Componente Navbar
+- ~~ Componente Navbar ~~
 
-- Componente Billboard
+- ~~ Componente Billboard ~~
 
-- Endpoint de filme aleatório
+- ~~ Endpoint de filme aleatório ~~
 
-- Lista de filmes
-  - Lista de filmes preferidos
+- ~~ Lista de filmes ~~
+  - ~~ Lista de filmes preferidos ~~
 
-- Componente Card de filme
-  - Efeito de hover
+- ~~ Componente Card de filme ~~
+  - ~~ Efeito de hover ~~
 
-- Video player
+- ~~ Video player ~~
 
-- Modal de informações sobre o filme
+- ~~ Modal de informações sobre o filme ~~
 
 - Deploy
