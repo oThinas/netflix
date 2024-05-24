@@ -43,45 +43,50 @@ export function AuthForm(props: AuthFormProps) {
     else handleLogin(data, toastID);
   };
 
-  const handleLogin = useCallback(async ({ email, password }: Omit<AuthFormFields, 'name'>, toastID: string) => {
-    try {
-      const response = await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-      });
+  const handleLogin = useCallback(
+    async ({ email, password }: Omit<AuthFormFields, 'name'>, toastID: string) => {
+      try {
+        const response = await signIn('credentials', {
+          email,
+          password,
+          redirect: false,
+        });
 
-      if (!response?.ok) {
-        const message = (email && password) ? 'Incorrect email and/or password' : 'Email and password required';
-        toast.error(message, { id: toastID });
-      } else {
-        toast.dismiss(toastID);
-        router.push('/profiles');
+        if (!response?.ok) {
+          const message = (email && password) ? 'Incorrect email and/or password' : 'Email and password required';
+          toast.error(message, { id: toastID });
+        } else {
+          toast.dismiss(toastID);
+          router.push('/profiles');
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [router]);
+    },
+    [router],
+  );
 
-  const handleRegister = useCallback(async ({ email, name, password }: AuthFormFields, toastID: string) => {
-    try {
-      await axios.post('/api/register', {
-        email,
-        name,
-        password,
-      });
+  const handleRegister = useCallback(
+    async ({ email, name, password }: AuthFormFields, toastID: string) => {
+      try {
+        await axios.post('/api/register', {
+          email,
+          name,
+          password,
+        });
 
-      handleLogin({ email, password }, toastID);
-    } catch (error: any) {
-      console.log(error);
-      const message = error.response.status === 422 ? 'Email taken' : 'An error occurred. Try again later';
-      toast.error(message, { id: toastID });
-    }
-  }, [handleLogin]);
+        handleLogin({ email, password }, toastID);
+      } catch (error: any) {
+        console.log(error);
+        const message = error.response.status === 422 ? 'Email taken' : 'An error occurred. Try again later';
+        toast.error(message, { id: toastID });
+      }
+    },
+    [handleLogin],
+  );
 
   async function handleSignIn(provider: 'github' | 'google') {
     toast.loading('Loading...');
-    console.log('props.session: ', props.session);
 
     if (props.session) await signOut({ redirect: false });
     await signIn(provider, { callbackUrl: '/profiles', redirect: false });
@@ -122,11 +127,17 @@ export function AuthForm(props: AuthFormProps) {
       </form>
 
       <div className='mt-8 flex flex-row items-center justify-center gap-4'>
-        <Button className='size-10 rounded-full bg-white hover:opacity-80' aria-label='Google login button' onClick={() => handleSignIn('google')}>
+        <Button
+          className='size-10 rounded-full bg-white hover:opacity-80' aria-label='Google login button'
+          onClick={() => handleSignIn('google')}
+        >
           <FcGoogle size={30} />
         </Button>
 
-        <Button className='size-10 rounded-full bg-white hover:opacity-80' aria-label='Github login button' onClick={() => handleSignIn('github')}>
+        <Button
+          className='size-10 rounded-full bg-white hover:opacity-80' aria-label='Github login button'
+          onClick={() => handleSignIn('github')}
+        >
           <FaGithub size={30} />
         </Button>
       </div>

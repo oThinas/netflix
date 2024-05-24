@@ -17,11 +17,15 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Auth({ session }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [variant, setVariant] = useState<'login' | 'register'>('login');
-  const toggleVariant = useCallback(() => {
-    setVariant((prevState) => {
-      return prevState === 'login' ? 'register' : 'login';
-    });
-  }, []);
+
+  const toggleVariant = useCallback(
+    () => {
+      setVariant((prevState) => {
+        return prevState === 'login' ? 'register' : 'login';
+      });
+    },
+    [],
+  );
 
   const { title, button, disclamer, toggle } = getVariantContent(variant);
 
@@ -47,7 +51,9 @@ export default function Auth({ session }: InferGetServerSidePropsType<typeof get
         </nav>
 
         <div className='flex justify-center'>
-          <div className='mt-2 flex w-full flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'>
+          <div
+            className='mt-2 flex w-full flex-col gap-8 self-center rounded-md bg-black/70 p-16 lg:w-2/5 lg:max-w-md'
+          >
             <Title as='h2'>
               {title}
             </Title>
@@ -59,7 +65,10 @@ export default function Auth({ session }: InferGetServerSidePropsType<typeof get
 
               &nbsp;
 
-              <Text as='span' className='cursor-pointer text-white hover:underline' tabIndex={0} onClick={() => toggleVariant()}>
+              <Text
+                as='span' className='cursor-pointer text-white hover:underline' tabIndex={0}
+                onClick={() => toggleVariant()}
+              >
                 {toggle}
               </Text>
             </Text>

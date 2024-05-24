@@ -10,6 +10,9 @@ interface ProfileImageProps {
 
 export function ProfileImage({ width = 'auto', height = 'auto', ...props }: ProfileImageProps) {
   return (
-    <Image src='/images/default-blue.png' alt='Profile image. A cartoon blue face' {...props} style={{ height, width }} width={320} height={320} />
+    <Image
+      src='/images/default-blue.png' alt='Profile image. A cartoon blue face' {...props}
+      style={{ height, width }} width={320} height={320}
+    />
   );
 }

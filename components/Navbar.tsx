@@ -15,24 +15,32 @@ export function Navbar() {
 
   const navbarItems = useMemo(() => ['Home', 'Series', 'Films', 'New & Popular', 'My List', 'Browse by languages'], []);
 
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > TOP_OFFSET) setIsBackgroundShown(true);
-      else setIsBackgroundShown(false);
-    }
+  useEffect(
+    () => {
+      function handleScroll() {
+        if (window.scrollY > TOP_OFFSET) setIsBackgroundShown(true);
+        else setIsBackgroundShown(false);
+      }
 
-    window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    },
+    [],
+  );
 
   return (
     <nav className='fixed z-40 w-full '>
-      <div className={`flex items-center px-4 py-6 transition duration-500 md:px-16 ${isBackgroundShown ? 'bg-zinc-900/90' : ''}`}>
-        <Image src='/images/logo.png' alt='Netflix logo. Written in red' className='h-4 lg:h-7' style={{ width: 'auto' }} width={1440} height={393} />
+      <div
+        className={`flex items-center px-4 py-6 transition duration-500 md:px-16
+        ${isBackgroundShown ? 'bg-zinc-900/90' : ''}`}
+      >
+        <Image
+          src='/images/logo.png' alt='Netflix logo. Written in red' className='h-4 lg:h-7'
+          style={{ width: 'auto' }} width={1440} height={393}
+        />
 
         <div className='ml-8 hidden gap-7 lg:flex'>
           {navbarItems.map((item) => (

@@ -60,8 +60,8 @@ export default function Profiles() {
           <div className='text-center' onClick={() => handleAcessProfile()} onKeyUp={({ key }) => handleKeyUp(key)}>
             <div className='group mx-auto w-44 break-words'>
               <div
-                className='flex size-44 items-center justify-center overflow-hidden rounded-md border-2 border-transparent transition
-                group-hover:cursor-pointer group-hover:border-white'
+                className='flex size-44 items-center justify-center overflow-hidden rounded-md border-2
+                border-transparent transition group-hover:cursor-pointer group-hover:border-white'
                 tabIndex={0}
               >
                 <ProfileImage width={176} height={176} />

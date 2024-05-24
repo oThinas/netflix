@@ -23,7 +23,10 @@ export function MobileMenu(props: MobileMenuProps) {
   return (
     <DropdownMenu.Root open={isMobileMenuShown} onOpenChange={() => handleToggleMobileMenu()}>
       <DropdownMenu.Trigger asChild tabIndex={0}>
-        <div className='relative ml-8 flex cursor-pointer items-center gap-2 lg:hidden' onClick={() => handleToggleMobileMenu()}>
+        <div
+          className='relative ml-8 flex cursor-pointer items-center gap-2 lg:hidden'
+          onClick={() => handleToggleMobileMenu()}
+        >
           <Text as='p' className='text-sm'>
             Browse
           </Text>
@@ -34,7 +37,8 @@ export function MobileMenu(props: MobileMenuProps) {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className='absolute -left-9 top-2 flex w-56 animate-slideDownAndFade flex-col gap-4 border-2 border-gray-800 bg-black py-5 transition will-change-[opacity,transform]'
+          className='absolute -left-9 top-2 flex w-56 animate-slideDownAndFade flex-col gap-4 border-2 border-gray-800
+          bg-black py-5 transition will-change-[opacity,transform]'
         >
           {props.items.map((item) => (
             <DropdownMenu.Item key={item} className='px-3 text-center hover:outline-none hover:ring-0'>

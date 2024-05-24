@@ -1,5 +1,4 @@
 /** Core */
-import { User } from '@prisma/client';
 import axios from 'axios';
 import { useCallback, useMemo } from 'react';
 import toast from 'react-hot-toast';
@@ -18,7 +17,7 @@ interface FavoriteButtonProps {
 
 export function FavoriteButton(props: FavoriteButtonProps) {
   const { mutate: mutateFavorites } = useFavorites();
-  const { data: currentUser, mutate } = useCurrentUser() as { data: User, mutate: any };
+  const { data: currentUser, mutate } = useCurrentUser();
 
   const isFavorite = useMemo(() => {
     const list = currentUser?.favoriteIds || [];
@@ -38,7 +37,7 @@ export function FavoriteButton(props: FavoriteButtonProps) {
     const updatedFavoriteIds = response?.data?.favoriteIds;
 
     mutate({
-      ...currentUser,
+      ...currentUser!,
       favoriteIds: updatedFavoriteIds,
     });
 

@@ -11,7 +11,6 @@ import { Text } from './Text';
 /** Hooks */
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 
-
 export function AccountMenu() {
   const { data: user } = useCurrentUser();
   const [isAccountMenuShown, setIsAccountMenuShown] = useState(false);
@@ -37,6 +36,7 @@ export function AccountMenu() {
           <div className='size-6 overflow-hidden rounded-md lg:size-10'>
             <ProfileImage />
           </div>
+
           <BsChevronDown className={`text-white transition ${isAccountMenuShown ? 'rotate-180' : 'rotate-0'}`} />
         </div>
       </DropdownMenu.Trigger>
