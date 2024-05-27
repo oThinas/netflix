@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 
 /** Components */
-import { Text, TextProps } from './Text';
+import { Text, TextProps } from '../Text';
 
 interface NavbarItemProps extends Omit<TextProps<'span'>, 'as'> {
   children: ReactNode;

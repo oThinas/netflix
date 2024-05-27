@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { BsBell, BsSearch } from 'react-icons/bs';
 
 /** Components */
-import { AccountMenu } from './AccountMenu';
-import { MobileMenu } from './MobileMenu';
+import { AccountMenu } from '../AccountMenu';
+import { MobileMenu } from '../MobileMenu';
 import { NavbarItem } from './NavbarItem';
 
 const TOP_OFFSET = 66;
