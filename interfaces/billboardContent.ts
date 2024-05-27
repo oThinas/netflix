@@ -1,7 +1,6 @@
-/** Core */
-import { Movie } from '@prisma/client';
+/** Interfaces */
+import { IDataMovieOrUndefined } from './movie';
 
-export interface IBillboardContent {
-  data: Movie | undefined;
+export interface IBillboardContent extends IDataMovieOrUndefined {
   onOpenModal(): void;
 }

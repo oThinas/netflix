@@ -1,0 +1,2 @@
+export { InfoModal } from './InfoModal';
+
