@@ -1,7 +1,7 @@
 /** Components */
-import { BillboardActions } from './Actions';
-import { BillboardDescription } from './Description';
-import { BillboardTitle } from './Title';
+import { BillboardActions } from './BillboardActions';
+import { BillboardDescription } from './BillboardDescription';
+import { BillboardTitle } from './BillboardTitle';
 
 /** Interfaces */
 import { IBillboardContent } from '@/interfaces/billboardContent';

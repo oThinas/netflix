@@ -2,8 +2,8 @@
 import { useCallback } from 'react';
 
 /** Components */
-import { BillboardContent } from './Content';
-import { BillboardVideo } from './Video';
+import { BillboardContent } from './BillboardContent';
+import { BillboardVideo } from './BillboardVideo';
 
 /** Hooks */
 import { useBillboard } from '@/hooks/useBillboard';
