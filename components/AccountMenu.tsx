@@ -56,8 +56,10 @@ export function AccountMenu() {
 
           <DropdownMenu.Separator className='my-4 h-px border-0 bg-gray-600' />
 
-          <DropdownMenu.Item className='px-3 text-center hover:outline-none hover:ring-0'>
-            <Text as='span' className='text-sm hover:underline' onClick={() => handleSignOut()}>
+          <DropdownMenu.Item
+            className='cursor-pointer px-3 text-center hover:outline-none hover:ring-0' onClick={() => handleSignOut()}
+          >
+            <Text as='span' className='text-sm hover:underline'>
               Sign out of Netflix
             </Text>
           </DropdownMenu.Item>
