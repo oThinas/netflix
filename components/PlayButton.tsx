@@ -6,12 +6,17 @@ import { BsFillPlayFill } from 'react-icons/bs';
 /** Components */
 import { Button } from './Button';
 
+/** Hooks */
+import { useWindowSize } from '@/hooks/useWindowSize';
+
 interface PlayButtonProps {
   movieId: string | undefined;
 }
 
 export function PlayButton(props: PlayButtonProps) {
   const router = useRouter();
+  const size = useWindowSize();
+  const iconSize = size === 'sm' ? 20 : 30;
 
   const handlePlay = useCallback(
     () => {
@@ -26,7 +31,7 @@ export function PlayButton(props: PlayButtonProps) {
       md:px-4 md:py-2 lg:text-lg'
       onClick={() => handlePlay()}
     >
-      <BsFillPlayFill size={32} />
+      <BsFillPlayFill size={iconSize} />
 
       Play
     </Button>
