@@ -6,16 +6,32 @@ import { MovieCardActions } from './MovieCardActions';
 import { MovieCardInfo } from './MovieCardInfo';
 
 /** Interfaces */
-import { IMovieCardOverlay } from '@/interfaces/movieCardOverlay';
+import { IIsOverlayOpen, IMovieCardOverlay, ISetOverlayOpen } from '@/interfaces/movieCardOverlay';
+import { useEffect, useRef } from 'react';
 
-type MovieCardOverlayProps = IMovieCardOverlay;
+type MovieCardOverlayProps = IMovieCardOverlay & IIsOverlayOpen & ISetOverlayOpen;
 
-export function MovieCardOverlay(props: MovieCardOverlayProps) {
+export function MovieCardOverlay({ setIsOverlayOpen, ...props }: MovieCardOverlayProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setIsOverlayOpen(false);
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside, true);
+
+    return () => document.removeEventListener('click', handleClickOutside, true);
+  }, [setIsOverlayOpen]);
+
   return (
     <div
-      className='invisible absolute top-0 z-10 w-full scale-0 opacity-0 transition delay-300 duration-200
+      className='visible absolute top-0 z-10 w-full scale-0 opacity-0 transition delay-300 duration-200
       group-hover:translate-x-[2vw] group-hover:translate-y-[-6vw] group-hover:scale-110 group-hover:opacity-100
-      sm:visible'
+      data-[open=open]:translate-x-[2vw] data-[open=open]:translate-y-[-6vw] data-[open=open]:scale-110 data-[open=open]:opacity-100'
+      data-open={props.isOverlayOpen ? 'open' : 'close'} ref={ref}
     >
       <Image
         src={props.data.thumbnailUrl} alt={`Thumbnail of ${props.data.title}`} width={1920} height={1000}
