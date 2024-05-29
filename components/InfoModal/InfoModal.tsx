@@ -23,8 +23,8 @@ export function InfoModal() {
       />
 
       <Dialog.Content
-        className='fixed left-1/2 top-1/2 z-50 mx-auto flex w-auto max-w-3xl -translate-x-1/2 -translate-y-1/2 flex-col
-        overflow-hidden rounded-md bg-zinc-900 drop-shadow-md duration-300'
+        className='fixed left-1/2 top-1/2 z-50 mx-auto flex max-h-screen w-auto -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden
+        rounded-md bg-zinc-900 drop-shadow-md duration-300 sm:max-w-3xl'
       >
         <div className='relative h-96'>
           <InfoModalVideo data={data} />
