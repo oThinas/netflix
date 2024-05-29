@@ -14,7 +14,7 @@ type MovieCardActionsProps = IMovieCardOverlay;
 
 export function MovieCardActions(props: MovieCardActionsProps) {
   return (
-    <div className='flex items-center gap-3'>
+    <div className='flex flex-wrap items-center gap-3'>
       <Button
         className='size-6 rounded-full bg-white hover:bg-neutral-300 lg:size-10'
         onClick={() => props.onPlay()}
@@ -25,8 +25,8 @@ export function MovieCardActions(props: MovieCardActionsProps) {
       <FavoriteButton movieId={props.data.id} />
 
       <Dialog.Trigger
-        className='group/item ml-auto flex size-6 cursor-pointer items-center justify-center rounded-full border-2
-      border-white transition hover:border-neutral-300 lg:size-10'
+        className='group/item flex size-6 cursor-pointer items-center justify-center rounded-full border-2 border-white
+        transition hover:border-neutral-300 sm:ml-auto lg:size-10'
         onClick={() => props.onOpenModal()}
       >
         <BiChevronDown className='text-white group-hover/item:text-neutral-300' size={32} />
